@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Diwali 🪔</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Poppins:wght@300;400;600;700&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  min-height:100vh;
+  overflow-x:hidden;
+  background:radial-gradient(circle at 50% 0%,#51205d,transparent 55%),
+  linear-gradient(145deg,#10051f,#21082e,#09051a);
+  color:white;
+  font-family:'Poppins',sans-serif;
+}
+
+.page{
+  display:none;
+  min-height:100vh;
+  width:100%;
+  padding:35px 18px;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  animation:pageIn .8s ease;
+}
+
+.page.active{display:flex}
+
+@keyframes pageIn{
+  from{opacity:0;transform:translateY(15px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+h1,h2{
+  font-family:'Cinzel',serif;
+  color:#ffd36a;
+  text-shadow:0 0 18px #ff9d36;
+}
+
+h1{font-size:clamp(2rem,7vw,4.5rem);margin:15px 0}
+h2{font-size:clamp(1.6rem,5vw,2.8rem);margin-bottom:18px}
+
+p{
+  color:#f9e8ff;
+  line-height:1.8;
+  max-width:650px;
+  margin:10px auto;
+}
+
+button{
+  border:none;
+  outline:none;
+  cursor:pointer;
+  padding:14px 30px;
+  border-radius:50px;
+  color:#32112d;
+  background:linear-gradient(120deg,#ffe69b,#ff9b42);
+  font-family:'Poppins',sans-serif;
+  font-size:1rem;
+  font-weight:700;
+  margin-top:25px;
+  box-shadow:0 0 22px #ff9e3d88;
+  transition:.3s;
+  position:relative;
+  z-index:5;
+}
+
+button:hover{transform:scale(1.07);box-shadow:0 0 35px #ffbd5e}
+
+.glass{
+  width:min(650px,95%);
+  padding:30px 22px;
+  border:1px solid #ffcf7955;
+  border-radius:25px;
+  background:#ffffff0c;
+  box-shadow:0 0 45px #ff8b3520;
+  backdrop-filter:blur(12px);
+  position:relative;
+  z-index:2;
+}
+
+.small{
+  color:#ffdba0;
+  letter-spacing:3px;
+  font-size:.8rem;
+  text-transform:uppercase;
+}
+
+.emoji{
+  font-size:clamp(3rem,10vw,6rem);
+  filter:drop-shadow(0 0 18px #ff9d36);
+  animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0) rotate(-3deg)}
+  50%{transform:translateY(-15px) rotate(3deg)}
+}
+
+footer{color:#bda6c7;font-size:.75rem;margin-top:30px}
+
+/* Stars */
+#stars{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  overflow:hidden;
+}
+
+.star{
+  position:absolute;
+  color:#ffe6a3;
+  animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+  from{opacity:.2;transform:scale(.7)}
+  to{opacity:1;transform:scale(1.3)}
+}
+
+/* Fireworks */
+#fireworks{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:1;
+}
+
+.celebration{
+  font-size:clamp(2rem,8vw,5rem);
+  margin:20px 0;
+  animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+  from{filter:drop-shadow(0 0 5px #ffb13b)}
+  to{filter:drop-shadow(0 0 30px #ff4f9a)}
+}
+
+.sound-toggle{
+  position:fixed;
+  right:15px;
+  top:15px;
+  z-index:20;
+  padding:10px 15px;
+  margin:0;
+  font-size:.8rem;
+}
+
+/* Floating diyas - Molecule style scatter across screen */
+.diya-area{
+  width:100%;
+  height:380px;
+  position:relative;
+  margin:15px auto;
+  overflow:hidden;
+  border-radius:20px;
+  background:rgba(255, 255, 255, 0.02);
+  border:1px dashed #ffcf7933;
+}
+
+.floating-diya{
+  position:absolute;
+  font-size:clamp(2.2rem, 6vw, 3.5rem);
+  cursor:pointer;
+  filter:drop-shadow(0 0 15px #ffb13b);
+  user-select:none;
+  animation:moleculeDrift 6s ease-in-out infinite alternate;
+  transition:filter .3s, transform .3s;
+  z-index:3;
+}
+
+.floating-diya:hover{
+  transform:scale(1.4) rotate(10deg);
+  filter:drop-shadow(0 0 30px #ffe16a);
+}
+
+.floating-diya:nth-child(1){left:8%;top:12%;animation-duration:4.3s}
+.floating-diya:nth-child(2){left:35%;top:8%;animation-duration:5.1s}
+.floating-diya:nth-child(3){left:65%;top:15%;animation-duration:3.7s}
+.floating-diya:nth-child(4){left:20%;top:45%;animation-duration:5.4s}
+.floating-diya:nth-child(5){left:55%;top:40%;animation-duration:4.7s}
+.floating-diya:nth-child(6){left:80%;top:50%;animation-duration:3.9s}
+.floating-diya:nth-child(7){left:5%;top:70%;animation-duration:5.6s}
+.floating-diya:nth-child(8){left:30%;top:75%;animation-duration:4.4s}
+.floating-diya:nth-child(9){left:60%;top:72%;animation-duration:5s}
+.floating-diya:nth-child(10){left:85%;top:25%;animation-duration:4.8s}
+
+@keyframes moleculeDrift{
+  0%{transform:translate(0,0) rotate(-10deg)}
+  33%{transform:translate(18px,-22px) rotate(12deg)}
+  66%{transform:translate(-15px,-12px) rotate(-6deg)}
+  100%{transform:translate(12px,18px) rotate(8deg)}
+}
+
+/* Note popup */
+.note-popup{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:30;
+  background:#080313dd;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.note-popup.show{display:flex}
+
+.note-box{
+  max-width:420px;
+  width:100%;
+  padding:30px 22px;
+  border:1px solid #ffd36a;
+  border-radius:22px;
+  background:linear-gradient(145deg,#32113f,#160921);
+  box-shadow:0 0 40px #ffb13b55;
+  animation:pageIn .4s ease;
+}
+
+/* Soan Papdi box */
+.sweet-scene{
+  perspective:900px;
+  margin:45px auto 25px;
+  width:250px;
+  height:210px;
+  position:relative;
+}
+
+.sweet-box{
+  position:absolute;
+  width:230px;
+  height:130px;
+  bottom:0;
+  left:10px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#e83c51,#8e1435);
+  border:3px solid #ffd36a;
+  box-shadow:0 15px 35px #0008;
+}
+
+.sweet-box::before{
+  content:"SOAN PAPDI";
+  position:absolute;
+  inset:25px 10px;
+  display:grid;
+  place-items:center;
+  font-family:'Cinzel',serif;
+  font-weight:900;
+  color:#ffe39a;
+  border:1px solid #ffd36a;
+  font-size:1.15rem;
+}
+
+.sweet-lid{
+  position:absolute;
+  width:240px;
+  height:48px;
+  left:5px;
+  bottom:115px;
+  border:3px solid #ffd36a;
+  border-radius:10px;
+  background:linear-gradient(135deg,#ff6c68,#a51a45);
+  transform-origin:left bottom;
+  transition:transform 1.2s ease;
+  z-index:3;
+}
+
+.sweet-lid::after{
+  content:"✨ DIWALI SPECIAL ✨";
+  color:#ffe5a0;
+  font-size:.7rem;
+  font-weight:bold;
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+}
+
+.sweet-scene.open .sweet-lid{
+  transform:translate(-25px,-100px) rotate(-32deg);
+}
+
+.sweet-piece{
+  position:absolute;
+  z-index:4;
+  left:50%;
+  bottom:80px;
+  font-size:3.5rem;
+  opacity:0;
+  transform:translate(-50%,0) scale(.3);
+}
+
+.sweet-scene.open .sweet-piece{
+  animation:sweetFly 2.1s cubic-bezier(.2,.8,.3,1) forwards;
+}
+
+@keyframes sweetFly{
+  0%{opacity:0;transform:translate(-50%,0) scale(.3)}
+  35%{opacity:1;transform:translate(-50%,-110px) scale(1.2) rotate(20deg)}
+  70%{opacity:1;transform:translate(-50%,-170px) scale(1.4) rotate(-15deg)}
+  100%{opacity:1;transform:translate(-50%,-130px) scale(1.15) rotate(5deg)}
+}
+
+/* QR */
+.qr-card{
+  width:min(350px,95%);
+  padding:25px;
+  background:linear-gradient(145deg,#fff0c8,#ffc76a);
+  color:#35152b;
+  border-radius:25px;
+  box-shadow:0 0 40px #ffbd5e77;
+  margin:20px auto;
+}
+
+.qr-card h2{color:#7e2444;text-shadow:none;font-size:1.5rem}
+.qr-card p{color:#54233b;font-size:.9rem}
+.qr-card img{
+  width:190px;height:190px;max-width:100%;
+  background:white;padding:9px;border-radius:12px;
+  margin:15px auto;
+}
+.qr-caption{font-size:.75rem!important;font-weight:600}
+
+/* Final page */
+.heart{
+  font-size:4rem;
+  animation:heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.18)}
+}
+
+#musicStatus{font-size:.8rem;color:#ffdda2;margin-top:12px}
+
+@media(max-width:450px){
+  .glass{padding:25px 15px}
+  .diya-area{height:340px}
+  .floating-diya{font-size:2.3rem}
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+<canvas id="fireworks"></canvas>
+
+<button class="sound-toggle" id="soundToggle" onclick="toggleFireworkSound()">
+🔊 Sound On
+</button>
+
+<!-- PAGE 1 -->
+<section class="page active" id="page1">
+  <div class="glass">
+    <div class="emoji">🪔</div>
+    <div class="small">A little surprise for you</div>
+    <h1>Happy Diwali</h1>
+    <h2 style="font-size:clamp(1.3rem,5vw,2rem)">
+      to all my friends!
+    </h2>
+    <p>
+      May your life shine brighter than a thousand diyas,
+      and may happiness always find its way to you.
+    </p>
+    <p style="color:#ffd36a">✨ Made with love & a little bit of code ✨</p>
+    <button onclick="go(2)">Let's Start ✨</button>
+  </div>
+  <footer>Made for my friends ❤️</footer>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page" id="page2">
+  <div class="glass">
+    <div class="small">The night of lights</div>
+    <div class="celebration">🎆 🪔 🎇</div>
+    <h1>Let The Celebration Begin!</h1>
+    <p>
+      Tonight, let every light bring a new reason to smile.
+      May your home be filled with peace, prosperity,
+      laughter and endless memories.
+    </p>
+    <p>✨ Wishing you a sparkling and magical Diwali! ✨</p>
+    <button onclick="go(3)">Explore the Diyas 🪔</button>
+  </div>
+</section>
+
+<!-- PAGE 3 -->
+<section class="page" id="page3">
+  <div class="glass">
+    <div class="small">A little light, a little love</div>
+    <h2>Choose a Diya 🪔</h2>
+    <p>Har diye mein chhupa hai ek chhota sa message. Tap karke dekho!</p>
+
+    <div class="diya-area">
+      <span class="floating-diya" onclick="showNote(0)">🪔</span>
+      <span class="floating-diya" onclick="showNote(1)">🪔</span>
+      <span class="floating-diya" onclick="showNote(2)">🪔</span>
+      <span class="floating-diya" onclick="showNote(3)">🪔</span>
+      <span class="floating-diya" onclick="showNote(4)">🪔</span>
+      <span class="floating-diya" onclick="showNote(5)">🪔</span>
+      <span class="floating-diya" onclick="showNote(6)">🪔</span>
+      <span class="floating-diya" onclick="showNote(7)">🪔</span>
+      <span class="floating-diya" onclick="showNote(8)">🪔</span>
+      <span class="floating-diya" onclick="showNote(9)">🪔</span>
+    </div>
+
+    <button onclick="go(4)">Next Surprise 🎁</button>
+  </div>
+</section>
+
+<div class="note-popup" id="notePopup" onclick="closeNote()">
+  <div class="note-box" onclick="event.stopPropagation()">
+    <div class="emoji" style="font-size:3rem">✨</div>
+    <h2 style="font-size:1.5rem">A little message</h2>
+    <p id="noteText"></p>
+    <button onclick="closeNote()">Close ❤️</button>
+  </div>
+</div>
+
+<!-- PAGE 4 -->
+<section class="page" id="page4">
+  <div class="glass">
+    <div class="small">A special Diwali treat</div>
+    <h2>Your Gift Is Here! 🎁</h2>
+    <p>Thoda sa pyaar, thodi si mithaas...</p>
+
+    <div class="sweet-scene" id="sweetScene">
+      <div class="sweet-piece">🍬</div>
+      <div class="sweet-box"></div>
+      <div class="sweet-lid"></div>
+    </div>
+
+    <button id="openSweet" onclick="openSweetBox()">
+      Open Your Gift 🎀
+    </button>
+
+    <p id="sweetMessage" style="min-height:55px"></p>
+
+    <button id="sweetNext" style="display:none" onclick="go(5)">
+      Next Surprise ✨
+    </button>
+  </div>
+</section>
+
+<!-- PAGE 5 -->
+<section class="page" id="page5">
+  <div class="glass">
+    <div class="small">One last little surprise</div>
+    <h1>Diwali Gift 🎁</h1>
+    <p>
+      This little QR holds a message for you.
+      Scan it and keep a little Diwali happiness with you.
+    </p>
+
+    <div class="qr-card">
+      <div style="font-size:2rem">💛 ✨ 💛</div>
+      <h2>A Gift From Me</h2>
+      <img id="qrImage" alt="QR code containing a Diwali greeting">
+      <p>Scan to reveal your little surprise!</p>
+      <p class="qr-caption">This is a greeting-message QR, not a payment QR.</p>
+    </div>
+
+    <p>
+      Some gifts don't need a price tag.
+      A little thought and a heartfelt wish are enough.
+    </p>
+
+    <button onclick="go(6)">One Last Thing ❤️</button>
+  </div>
+</section>
+
+<!-- PAGE 6 -->
+<section class="page" id="page6">
+  <div class="glass">
+    <div class="heart">❤️</div>
+    <div class="small">A message from the creator</div>
+    <h1>Thank You!</h1>
+    <p>
+      I hope this little website made you smile.
+      May your Diwali be full of beautiful moments,
+      amazing memories and people who make life brighter.
+    </p>
+    <h2 style="font-size:1.5rem">Happy Diwali Once Again! 🪔</h2>
+    <p style="color:#ffd36a">Made with ❤️ and code.</p>
+
+    <p id="musicStatus">🎵 Jethalal special Diwali song is ready...</p>
+
+    <button onclick="finishWebsite()">
+      Kaisi Lagi Website? Mere Upar Click Karo ❤️
+    </button>
+  </div>
+</section>
+
+<!-- Audio elements -->
+<video id="diwaliSong" preload="auto" loop playsinline style="display:none">
+  <source src="happy-diwali.mp4" type="video/mp4">
+</video>
+
+<audio id="jethalalSong" preload="auto" loop style="display:none">
+  <source src="jethalal-diwali.mp3" type="audio/mp3">
+</audio>
+
+<script>
+// Stars generator
+const stars = document.getElementById("stars");
+
+for(let i=0;i<75;i++){
+  const star=document.createElement("span");
+  star.className="star";
+  star.textContent=Math.random()>.5?"✦":"·";
+  star.style.left=Math.random()*100+"%";
+  star.style.top=Math.random()*100+"%";
+  star.style.fontSize=(8+Math.random()*15)+"px";
+  star.style.animationDelay=Math.random()*3+"s";
+  stars.appendChild(star);
+}
+
+// Page navigation
+function go(number){
+  document.querySelectorAll(".page").forEach(page=>{
+    page.classList.remove("active");
+  });
+
+  document.getElementById("page"+number).classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+
+  if(number===2) {
+    startFireworks();
+  }
+
+  // Handle songs based on page
+  if(number===6) {
+    stopDiwaliSong();
+    startJethalalSong();
+  } else {
+    stopJethalalSong();
+    if(number >= 2) {
+      startDiwaliSong();
+    }
+  }
+}
+
+// Diya messages
+const notes=[
+  "May your life always be filled with happiness, success and positivity. Happy Diwali! ✨",
+  "Keep smiling, keep shining and never stop chasing your dreams. 💛",
+  "May every diya remove darkness and bring new hope into your life. 🪔",
+  "Wishing you beautiful memories, good health and endless laughter. ❤️",
+  "May your hard work turn into success and your dreams into reality. 🌟",
+  "Stay blessed, stay happy and keep spreading positivity. Happy Diwali! 🎆",
+  "May your home always be full of love, laughter and peace. 🏡",
+  "Keep being the reason someone smiles today. 😊",
+  "May every new day bring you a new opportunity. 🌈",
+  "Sending you lots of good wishes this Diwali. 💖"
+];
+
+function showNote(index){
+  playCrackerSound();
+  document.getElementById("noteText").textContent=notes[index];
+  document.getElementById("notePopup").classList.add("show");
+}
+
+function closeNote(){
+  document.getElementById("notePopup").classList.remove("show");
+}
+
+// Soan Papdi unboxing
+let sweetOpened=false;
+
+function openSweetBox(){
+  if(sweetOpened)return;
+  sweetOpened=true;
+
+  playCrackerSound();
+  document.getElementById("sweetScene").classList.add("open");
+  document.getElementById("openSweet").style.display="none";
+
+  document.getElementById("sweetMessage").innerHTML=
+    "Budget kam tha dosto... yahi khaa lo! 😂🍬<br>Isse hi kaam chalao!";
+
+  setTimeout(()=>{
+    document.getElementById("sweetNext").style.display="inline-block";
+  },2000);
+}
+
+// QR greeting
+const qrMessage=
+"Happy Diwali! May your life always shine with happiness, love, peace and success. This little gift is a reminder that you are special. Keep smiling!";
+
+document.getElementById("qrImage").src=
+"https://api.qrserver.com/v1/create-qr-code/?size=220x220&data="+
+encodeURIComponent(qrMessage);
+
+// Songs handling
+const song=document.getElementById("diwaliSong");
+const jethalalSong=document.getElementById("jethalalSong");
+
+function startDiwaliSong(){
+  if(jethalalSong && !jethalalSong.paused) return;
+  song.volume=0.8;
+  song.play().then(()=>{
+    document.getElementById("musicStatus").textContent="🎵 Diwali music is playing on loop!";
+  }).catch(()=>{});
+}
+
+function stopDiwaliSong(){
+  song.pause();
+  song.currentTime=0;
+}
+
+function startJethalalSong(){
+  jethalalSong.volume=1;
+  jethalalSong.play().then(()=>{
+    document.getElementById("musicStatus").textContent="🎶 Jethalal special Diwali song playing!";
+  }).catch(()=>{
+    document.getElementById("musicStatus").textContent="Tap sound toggle if playback doesn't start.";
+  });
+}
+
+function stopJethalalSong(){
+  jethalalSong.pause();
+  jethalalSong.currentTime=0;
+}
+
+function finishWebsite(){
+  stopDiwaliSong();
+  stopJethalalSong();
+  window.close();
+
+  setTimeout(()=>{
+    if(!document.hidden){
+      if(history.length>1){
+        history.back();
+      }else{
+        alert("Thank you for visiting! Happy Diwali! ❤️");
+      }
+    }
+  },250);
+}
+
+// Fireworks canvas & heavy celebration crackers
+const canvas=document.getElementById("fireworks");
+const ctx=canvas.getContext("2d");
+
+let particles=[];
+let fireworksRunning=false;
+let fireworkSound=true;
+let audioContext=null;
+
+function resizeCanvas(){
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  canvas.width=window.innerWidth*dpr;
+  canvas.height=window.innerHeight*dpr;
+  canvas.style.width=window.innerWidth+"px";
+  canvas.style.height=window.innerHeight+"px";
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+}
+
+window.addEventListener("resize",resizeCanvas);
+resizeCanvas();
+
+function makeAudioContext(){
+  if(!audioContext){
+    const AudioCtx=window.AudioContext||window.webkitAudioContext;
+    if(AudioCtx) audioContext=new AudioCtx();
+  }
+  if(audioContext&&audioContext.state==="suspended"){
+    audioContext.resume();
+  }
+}
+
+// Enhanced Firecracker & Pop sound generator using Web Audio
+function playCrackerSound(){
+  if(!fireworkSound)return;
+  makeAudioContext();
+  if(!audioContext)return;
+
+  const osc=audioContext.createOscillator();
+  const gain=audioContext.createGain();
+
+  osc.type="triangle";
+  osc.frequency.setValueAtTime(120,audioContext.currentTime);
+  osc.frequency.exponentialRampToValueAtTime(30,audioContext.currentTime+.25);
+
+  gain.gain.setValueAtTime(.25,audioContext.currentTime);
+  gain.gain.exponentialRampToValueAtTime(.001,audioContext.currentTime+.3);
+
+  osc.connect(gain);
+  gain.connect(audioContext.destination);
+  osc.start();
+  osc.stop(audioContext.currentTime+.3);
+}
+
+function toggleFireworkSound(){
+  fireworkSound=!fireworkSound;
+  document.getElementById("soundToggle").textContent=
+    fireworkSound?"🔊 Sound On":"🔇 Sound Off";
+  if(fireworkSound)makeAudioContext();
+}
+
+function createFirework(){
+  const x=Math.random()*window.innerWidth;
+  const y=Math.random()*window.innerHeight*.7;
+
+  const colors=[
+    "#ffd36a","#ff65a3","#74eaff",
+    "#ffffff","#ff8c32","#a78bfa",
+    "#7dffb3","#ff4e70","#ffc107"
+  ];
+
+  const color=colors[Math.floor(Math.random()*colors.length)];
+  const count=85+Math.floor(Math.random()*50); // Heavy cracker particle count
+
+  for(let i=0;i<count;i++){
+    const angle=Math.random()*Math.PI*2;
+    const speed=Math.random()*6+1.5;
+
+    particles.push({
+      x,y,
+      vx:Math.cos(angle)*speed,
+      vy:Math.sin(angle)*speed,
+      life:1,
+      decay:.005+Math.random()*.008,
+      size:Math.random()*3+1,
+      color
+    });
+  }
+
+  if(Math.random() < 0.4) playCrackerSound();
+}
+
+function animateFireworks(){
+  if(!fireworksRunning)return;
+
+  ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+
+  if(Math.random()<.18)createFirework();
+
+  for(let i=particles.length-1;i>=0;i--){
+    const p=particles[i];
+
+    p.x+=p.vx;
+    p.y+=p.vy;
+    p.vy+=.02;
+    p.vx*=.99;
+    p.life-=p.decay;
+
+    ctx.globalAlpha=Math.max(0,p.life);
+    ctx.fillStyle=p.color;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+    ctx.fill();
+
+    if(p.life<=0)particles.splice(i,1);
+  }
+
+  ctx.globalAlpha=1;
+  requestAnimationFrame(animateFireworks);
+}
+
+function startFireworks(){
+  if(fireworksRunning)return;
+  fireworksRunning=true;
+  animateFireworks();
+}
+</script>
+
+</body>
+</html>
